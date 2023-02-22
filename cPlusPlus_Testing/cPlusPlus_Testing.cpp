@@ -1,22 +1,41 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
-class MyClass {
+class vars {
 public:
-    int myNum;
-    string myString;
+    string descript;
+    int price;
+    string myText;
+
+    void myMethod() {
+        ofstream MyFile("GarageSale.txt");
+
+        cout << "Enter description of the item: ";
+        getline(cin, descript);
+        cin.clear();
+        cin.sync();
+
+        cout << "Enter the items price: ";
+        getline(cin, price);
+
+        MyFile << descript + " ";
+        MyFile << price;
+
+        MyFile.close();
+    }
 };
 
 int main() {
-    MyClass myObj;
-    myObj.myNum = 15;
-    myObj.myString = "Some Text";
+    vars myObj;
+    myObj.myMethod();
 
-    cout << myObj.myNum << "\n";
-    cout << myObj.myString;
-
+    ifstream MyReadFile("GarageSale.txt");
+    while (getline (MyReadFile, myObj.myText)) {
+        cout << myObj.myText << endl;
+    }
     return 0;
 }
 
