@@ -20,4 +20,3 @@ private:
 	wxPanel* panel_bottom_right;
 	void OnButtonClicked(wxCommandEvent& evt);
 };
-

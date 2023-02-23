@@ -6,13 +6,14 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
+
 const long ID_STATICTEXT1 = wxNewId();
 wxInt16 y = 10;
 wxArrayString descript = {};
 wxArrayInt price = {};
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
-
 	panel_top = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(200, 50));
 	panel_bottom = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(200, 50));
 	panel_bottom_right = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(-1, 50));
@@ -28,7 +29,6 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) 
 	staticText3 = new wxStaticText(panel_top, wxID_ANY, "Enter Price:", wxPoint(10, 30), wxDefaultSize);
 	spinPrice = new wxSpinCtrl(panel_top, wxID_ANY, "", wxPoint(75, 27), wxSize(210, -1));
 
-
 	btn = new wxButton(panel_bottom_right, wxID_ANY, "Submit", wxPoint(0, 8), wxDefaultSize);
 	this->SetSizerAndFit(sizer);
 	btn->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClicked, this);
@@ -37,7 +37,6 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) 
 }
 
 void MainFrame::OnButtonClicked(wxCommandEvent& evt) {
-
 	staticText2 = new wxStaticText(panel_bottom, wxID_ANY, "", wxPoint(10, y), wxDefaultSize);
 
 	wxString str = textDescript->GetValue() + " $" << spinPrice->GetValue();
@@ -56,7 +55,7 @@ void MainFrame::OnButtonClicked(wxCommandEvent& evt) {
 	std::ofstream outfile("output.txt");
 
 	for (int i = 0; i < descript.GetCount(); i++) {
-		outfile << descript[i] << " $" << price[i] << std::endl;
+		outfile << descript[i] << " $" << price[i] << endl;
 	}
 
 	outfile.close();
