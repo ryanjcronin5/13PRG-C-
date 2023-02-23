@@ -1,6 +1,6 @@
 #pragma once
 #include <wx/wx.h>
-#include <wx/spinctrl.h>
+#include <wx/radiobox.h>
 
 class MainFrame : public wxFrame
 {
@@ -11,9 +11,8 @@ private:
 	wxBoxSizer* sizer;
 	wxStaticText* staticText1;
 	wxStaticText* staticText2;
-	wxStaticText* staticText3;
 	wxTextCtrl* textDescript;
-	wxSpinCtrl* spinPrice;
+	wxRadioBox* radioBox;
 	wxButton* btn;
 	wxPanel* panel_top;
 	wxPanel* panel_bottom;
